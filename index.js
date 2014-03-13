@@ -76,7 +76,7 @@ function GetSchema(client) {
 	}
 
 
-	return this
+	return self
 }
 
 module.exports = GetSchema
