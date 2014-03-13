@@ -9,15 +9,14 @@ function Module(client) {
 		client.query('SELECT ' + fields + ' FROM information_schema.columns WHERE table_name ="' + tablename + '"', callback)
 	}
 	
-	API  = {
-		get: function(tablename, callback) {
-			query(tablename, 'column_name, data_type, character_maximum_length', callback)
-		},
-		getColumns: function(tablename, callback) {
-			query(tablename, 'column_name', callback)
-		}
+	self.get = function(tablename, callback) {
+		query(tablename, 'column_name, data_type, character_maximum_length', callback)
 	}
-	return API
+	
+	self.getColumns = function(tablename, callback) {
+		query(tablename, 'column_name', callback)
+	}
+	return this
 }
 
-module.exports = Module()
+module.exports = Module
