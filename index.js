@@ -1,7 +1,7 @@
-// Module by angleman, MIT
+// get-schema by angleman, MIT
 // Get Redshift / postgres schema for a table
 
-function Module(client) {
+function GetSchema(client) {
 	self = this
 	
 	function query(tablename, fields, callback) {
@@ -79,4 +79,4 @@ function Module(client) {
 	return this
 }
 
-module.exports = Module
+module.exports = GetSchema
