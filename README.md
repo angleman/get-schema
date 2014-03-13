@@ -20,8 +20,22 @@ pg.connect(conString, function(err, client, done) {
   if(err) throw new Error(err)
 
   schema = new GetSchema(client) // valid client that supports 'query()'
-  schema.get('tablename', function(err, result) {
-	  // results: 
+  schema.getColumns('registered_voters', function(err, result) {
+	  // results: [ "id", "timestamp", "name", "voted" ]
+  })
+  schema.get('registered_voters', function(err, result) {
+	// results: 
+	// [ { id: 'integer' },
+	// { timestamp: 'timestamp' },
+	// { name: 'varchar' },
+	// { voted: 'boolean' }
+  })
+  schema.getCreateTypes('registered_voters', function(err, result) {
+	// results: 
+	// [ { id: 'integer' },
+	// { timestamp: 'timestamp' },
+	// { name: 'varchar(80)' }, // character length added
+	// { voted: 'boolean' }
   })
 })
 ```
