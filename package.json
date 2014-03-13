@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha -R list test/*.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.3",
     "grunt-bump": "0.0.13",
