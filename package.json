@@ -1,6 +1,6 @@
 {
   "name": "get-schema",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Get Redshift / postgres schema for a table",
   "main": "index.js",
   "scripts": {
