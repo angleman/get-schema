@@ -32,7 +32,6 @@ function GetSchema(client) {
 					}
 					json.push(SQ +row['column_name'] + SQ + ": " + SQ + type + SQ)
 				}
-				console.log(json)
 				result  = JSON.parse('{' + json.join(',') + '}')
 			}
 			callback(err, result)
