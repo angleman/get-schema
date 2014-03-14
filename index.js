@@ -2,15 +2,13 @@
 // Get Redshift / postgres schema for a table
 
 function GetSchema(client) {
-	self = this
-	
 	function query(tablename, fields, callback) {
 		fields = (typeof fields == 'string') ? fields : fields.join(',')
 		qry    = 'SELECT ' + fields + " FROM information_schema.columns WHERE table_name='" + tablename + "'"
 		client.query(qry, callback)
 	}
 	
-	self.get = function(tablename, callback, addLength) {
+	this.get = function(tablename, callback, addLength) {
 		function extractColumns(err, result) {
 			if (result && result.rows) {
 				rows = result.rows
@@ -39,11 +37,11 @@ function GetSchema(client) {
 		query(tablename, 'column_name, data_type, character_maximum_length', extractColumns)
 	}
 	
-	self.getCreateTypes = function(tablename, callback) {
-		return self.get(tablename, callback, true)
+	this.getCreateTypes = function(tablename, callback) {
+		return this.get(tablename, callback, true)
 	}
 	
-	self.getColumns = function(tablename, callback) {
+	this.getColumns = function(tablename, callback) {
 		function extractColumns(err, result) {
 			if (result && result.rows) {
 				rows = result.rows
@@ -58,8 +56,7 @@ function GetSchema(client) {
 		query(tablename, 'column_name', extractColumns)
 	}
 
-
-	return self
+	return this
 }
 
 module.exports = GetSchema
