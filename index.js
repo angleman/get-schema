@@ -8,6 +8,15 @@ function GetSchema(client) {
 		client.query(qry, callback)
 	}
 	
+	this.getRaw = function(tablename, callback) {
+		query(tablename, 'column_name, data_type, character_maximum_length', function(err, result) {
+			if (result && result.rows) {
+				result = result.rows
+			}
+			callback(err, result)
+		})
+	}
+
 	this.get = function(tablename, callback, addLength) {
 		function extractColumns(err, result) {
 			if (result && result.rows) {
@@ -34,6 +43,7 @@ function GetSchema(client) {
 			}
 			callback(err, result)
 		}
+
 		query(tablename, 'column_name, data_type, character_maximum_length', extractColumns)
 	}
 	
